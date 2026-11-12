@@ -1,0 +1,71 @@
+{
+  "name": "@enderingit/cordis-plugin-empty-response-guard",
+  "description": "Compatibility-focused derivative of argszero/cordis-plugin-empty-response-guard. Adds tested @deepseek-ai/dsh-llm 0.2.2-rc.1 peer compatibility and configures this DSH bundle for mode=off by default; guard modes remain configurable.",
+  "version": "0.2.2",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Enderingit/cordis-plugin-empty-response-guard.git"
+  },
+  "homepage": "https://github.com/Enderingit/cordis-plugin-empty-response-guard#readme",
+  "bugs": {
+    "url": "https://github.com/Enderingit/cordis-plugin-empty-response-guard/issues"
+  },
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./src/*": "./src/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/types/**/*.d.ts",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "cordis",
+    "deepseek-harness",
+    "dsh",
+    "plugin",
+    "guard",
+    "empty-response",
+    "reasoning",
+    "retry"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.2",
+    "@deepseek-ai/dsh-llm": ">=0.1.3-alpha.2 <0.1.4 || >=0.1.5-alpha.1 <0.2.0 || >=0.1.6-alpha.1 <0.2.0 || 0.2.2-rc.1"
+  },
+  "dependencies": {
+    "@deepseek-ai/schemastery": "^3.18.1"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": "^4.0.2",
+    "@deepseek-ai/dsh-llm": "0.2.2-rc.1",
+    "semver": "^7.8.5",
+    "typescript": "^5.5.0"
+  },
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "tsc",
+    "test": "tsc && node --test \"test/*.test.js\"",
+    "prepublishOnly": "tsc"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/dsh-llm": {
+      "optional": false
+    }
+  }
+}
